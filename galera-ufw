@@ -1,0 +1,12 @@
+[Galera]
+title=Galera
+description=Galera cluster. 'ufw allow from x.x.x.x to any app Galera' to add node x.x.xx to the cluster.
+#
+# 4567 - is the port other nodes will use to check if this node is synced
+#        and available to become a donor.
+# 4568 - is used by snapshot state transfer (SST) i.e. copy of all data.
+# 4444 - used by rsync.
+# 3306 - the mysql port
+#
+ports=4567,4568,4444,3306/tcp
+#
