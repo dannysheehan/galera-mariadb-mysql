@@ -35,6 +35,7 @@ then
 fi
 
 echo "START: `date`"
+echo
 
 #
 # clean up after RETENTION days.
@@ -60,8 +61,7 @@ do
   # For InnoDB single-transaction is recommended.
   mysqldump --single-transaction ${DB} | gzip -9 > ${BKUP_FILE}
 
-  echo
-  echo "backup file checksum is `sum ${BKUP_FILE}`"
+  echo "${BKUP_FILE} checksum is `sum ${BKUP_FILE}`"
 
   # Encrypt database
   openssl ${ENCALGO} \
@@ -70,7 +70,6 @@ do
       -pass file:$PASSWDFILE
 
   rm ${BKUP_FILE}
-  echo "To decrpyt -> openssl aes-128-cbc -d -in ${BKUP_FILE}.enc | gunzip -9"
 
 done
 
