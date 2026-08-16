@@ -1,7 +1,7 @@
 > **Archived.** These scripts are from 2013–2014, for the same tuxlite LAMP cluster as [djbdns-tinydns](https://github.com/dannysheehan/djbdns-tinydns) and [lsyncd](https://github.com/dannysheehan/lsyncd). The Galera cluster files (`galera-tune.cnf`, `galera-ufw`) were deleted in November 2014. What remains is a backup helper and a MyISAM→InnoDB dump rewrite.
 >
 > That is not a good 2026 setup:
-> - This is not a Galera how-to. [MariaDB still ships Galera](https://mariadb.org/documentation/galera/) in the community server; Codership's MySQL Galera builds [EOL 30 September 2026](https://mariadb.com/resources/blog/upgrade-now-announcing-mysql-galera-cluster-in-place-migration-to-mariadb-galera-cluster/). Use current MariaDB or Percona XtraDB Cluster docs, not these files.
+> - This is not a Galera how-to. [MariaDB still ships Galera](https://mariadb.com/kb/en/galera-cluster/) in the community server; Codership's MySQL Galera builds [EOL 30 September 2026](https://mariadb.com/resources/blog/upgrade-now-announcing-mysql-galera-cluster-in-place-migration-to-mariadb-galera-cluster/). Use current MariaDB or Percona XtraDB Cluster docs, not these files.
 > - `backupdb.sh` dumps with `mysqldump --single-transaction`, encrypts with OpenSSL `aes-128-cbc`, and offsits with [grive](https://github.com/vitalif/grive2), an unofficial Drive client. Use mariabackup/xtrabackup and a current object-store tool.
 > - `myisam2innodb.pl` comments out FULLTEXT and rewrites `ENGINE=MyISAM` in a dump. Galera still requires InnoDB; you would not start from MyISAM today.
 >
